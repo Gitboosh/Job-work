@@ -1,0 +1,9 @@
+import-module msonline
+install-module msonline
+connect-msolservice
+$Userpn = Read-Host "Enter alias"
+$Domain = '@tcc.com'
+$UPN = $Userpn + $Domain
+
+Get-msoluser -userprincipalname $UPN | Select Immutableid
+Set-msoluer -userprincipalname $UPN -immutableid 
