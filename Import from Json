@@ -1,0 +1,17 @@
+{
+  "displayname": "Joey Hamm",
+  "MailNickname": "JoeyHamm",
+"Joeyhamm@domain.com",
+  "City": "Tacoma",
+  "Department": "Technology",
+  "GivenName": "Joey",
+  "Surname": "Hamm",
+}
+
+$userPropertiesHash = Get-Content .\2_useraccount\filename | ConvertFrom-Json -AsHashtable
+
+$PasswordProfile = @{
+ForceChangePasswordNextSignIn = $true
+Password = 'P@Ssword123!@#'
+}
+New-MgUser @userPropertiesHash -PasswordProfile $PasswordProfile -AccountEnabled
