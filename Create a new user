@@ -1,0 +1,4 @@
+$PasswordProfile = @{
+    Password = 'P@Ssword123!@#'
+}
+New-MgUser -Displayname 'First + Last' -PasswordProfile $PasswordProfile -AccountEnabled -MailNickName 'RobSmith' -UserPrincipalName 'Email/Alias'
