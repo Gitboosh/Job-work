@@ -1,0 +1,7 @@
+import-module msonline
+install-module msonline
+connect-msolservice
+
+
+Get-msoluser -userprincipalname "____@domain.com" | Select Immutableid
+Set-msoluer -userprincipalname "_____@domain.com" -immutableid 
