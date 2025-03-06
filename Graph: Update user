@@ -5,3 +5,6 @@ $joey = Get-MgUser -filter "DisplayName eq 'Joey Hamm'" -property *
 
 #with the ID I can update any user property
 Update-mgUser -UserID $joey.ID -city "Phoenix"
+
+#update if user is enabled
+Update-MgUser -Userid $joey.Id -AccountEnabled:$false
