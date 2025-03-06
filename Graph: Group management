@@ -1,0 +1,17 @@
+Get-MgGroup
+
+# has to be in the format (double) property comparison (single)value(single)(double)
+$itadminsGroup = Get-MgGroup -filter "DisplayName eq 'IT-Admins'"
+
+$helpdeskGroup = Get-MgGroup -Filter "DisplayName eq 'HelpDesk'"
+
+<#
+New-MgGroup -DisplayName 'Security - Test Group' -MailEnabled:$False -MailNickName 'security-testgroup' -SecurityEnabled
+
+$prop = @{}
+$prop["mailEnabled"] = true
+New-MgGroup -DisplayName 'SecurityMail - Test Group' -MailNickName 'securitymail-testgroup' -AdditionalProperties $prop -SecurityEnabled
+#>
+
+
+
