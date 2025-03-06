@@ -1,3 +1,4 @@
+#Template
 {
   "displayname": "Joey Hamm",
   "MailNickname": "JoeyHamm",
@@ -7,7 +8,7 @@
   "GivenName": "Joey",
   "Surname": "Hamm",
 }
-
+#Call the template
 $userPropertiesHash = Get-Content .\2_useraccount\filename | ConvertFrom-Json -AsHashtable
 
 $PasswordProfile = @{
