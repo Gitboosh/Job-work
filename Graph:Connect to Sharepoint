@@ -1,0 +1,21 @@
+Install-Module Microsoft.Onlilne.SharePoint.Powershell
+
+Connect-SPOService -Url https://whatisyoursiteaddress-admin.sharepoint.com/
+
+#run this to find all sites
+Get-SPOSite 
+#filter a paticular site
+$site = Get-SPOSite -Filter 'Url -eq "https://whatspecificsite.sharepoint.com"
+
+#Who is on the site
+Get-SPOUser -Site $site
+
+#report showing what is requested. level and access
+foreach($site in Get-SPOSite)
+{
+  Write-Host "'n'n$($site.url)" -ForegroundColor Green
+  Get-SPOUser -Site $site
+}
+
+#Tenant information 
+Get-SPOTenant | Select-Object -Property PublicCdnAllowedFileTypes,OneDriveForGuestsEnabled,SharingCapability,PreventExternalUsersFromResharing | Format-List
