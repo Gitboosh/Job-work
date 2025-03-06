@@ -1,0 +1,14 @@
+#Next time user attempts to make a change or hopefully do something it will lock them out. 
+
+$joey = Get-MgUser -Filter "DisplayName eq 'Joey Hamm'"
+
+#revoke signed in sessions
+Revoke-MgUserSignInSession -UserId $joey.id -Verbose
+
+#Block sign in 
+Update-MgUser -UserId $joey.Id -AccountEnabled:$false
+
+
+<# delete user
+Remove-Mguser -UserId $joey.Id -Verbose
+#>
