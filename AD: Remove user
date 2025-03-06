@@ -1,0 +1,11 @@
+Remove-ADUser -Identity jhamm
+
+
+<#
+if this was done by accident run the following script
+$SAM ="jhamm"
+
+$user = Get-ADObject -filter {(SamAccountName -eq $SAM)} -IncludeDeletedObjects -Properties *
+
+$user | Restore-ADObject -TargetPath "CN=Users ,DC=zoneb ,DC=com"
+#>
