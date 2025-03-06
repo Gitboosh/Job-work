@@ -1,0 +1,33 @@
+<#Get connected
+Get-Module -Name *exchange* -ListAvailable
+import-module exchangeonlinemangement
+Connect-exchangeonline
+Connect-MgGraph -scopes $params
+#>
+Get-exomailbox -userprincipalname 
+
+$variableuser = Get-MgUser -all | Where-Object {$_.DisplayName -eq "user name"}
+
+#mailbox size | delete count 
+Get-EXOMailbox -UserPrincipalName $variableuser.mail | Get-Exomailboxstatistics 
+
+<# Find specific emails with a subject line
+$user = Get-MgUser -all | Where-Object {$_.DisplayName -eq "Joey Hamm"}
+Get-MgUserMessage -UserId $user.id | Where-Object {$_.Subject -like "*SPAM*"}
+
+$spam = Get-MgUserMessage -userId $user.id | Where-Object {$_.Subject -like "*SPAM*"}
+#>
+<# Lets remove these bad emails
+$users =(Get-MgUser -all | Where-Object {$_.Mail -ne $null})
+
+foreach($user in $users)
+{
+  $messages = Get-MgUserMessage -UserId $user.id | Where-Object {$_.subject -like "*SPAM*"}
+  foreach($message in $messages)
+  {
+    Remove-MgUserMessage -MessageId $message.id -UserId $user.Id -Verbose
+  }
+}
+
+
+#>
