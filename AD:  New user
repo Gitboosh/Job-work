@@ -1,0 +1,18 @@
+$password = "P@ssword123$%"
+
+
+
+#Use a for/each loop
+
+  New-ADUser -Name $DisplayName '
+            -DisplayName $DisplayName '
+            -GivenName $GivenName '
+            -Surname $Surname '
+            -SamAccountName $SAM '
+            -UserPrincipalName $UPN
+            -Office $office '
+            -Description "$SessionTitle - $StartDate" '
+            -Path "OU=$ClassType,$OU" '
+            -CannotChangePassword $false '
+            -PasswordNeverExpires $false '
+            -AccountPassword (ConverTo-SecureString -AsPlainText $password -Force) -PassThru | Enable-ADAccount
