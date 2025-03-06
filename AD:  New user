@@ -1,7 +1,19 @@
 $password = "P@ssword123$%"
 
+ New-ADUser -Name "I User" '
+            -DisplayName "I" '
+            -GivenName "I" '
+            -Surname "User" '
+            -SamAccountName useri '
+            -UserPrincipalName "useri@domainwhat.com"
+            -Office "" '
+            -Description "Tech associate" '
+            -Path "CN=Users ,DC=zoneb ,DC=com" '
+            -CannotChangePassword $false '
+            -PasswordNeverExpires $false '
+            -AccountPassword (ConverTo-SecureString -AsPlainText $password -Force) -PassThru | Enable-ADAccount
 
-
+#< Go with variables for automation
 #Use a for/each loop
 
   New-ADUser -Name $DisplayName '
@@ -16,3 +28,4 @@ $password = "P@ssword123$%"
             -CannotChangePassword $false '
             -PasswordNeverExpires $false '
             -AccountPassword (ConverTo-SecureString -AsPlainText $password -Force) -PassThru | Enable-ADAccount
+#>
