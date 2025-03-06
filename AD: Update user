@@ -1,0 +1,2 @@
+#choose whatever parameter
+Set-ADuser -Identity "Iuser" -Department "Tech"
