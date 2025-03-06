@@ -1,0 +1,9 @@
+$daysInactive = 90
+$timeStamp = (Get-Date).AddDays(-($daysInactive))
+$staleAccounts = Get-ADUser -Filter {LastLogonTimeStamp -lt $timeStamp -and Enabled -eq $true} -Properties LastLogonTimeStamp
+
+#Disable the account and list a statment with accounts that are disabled
+foreach ($account in $staleAccounts) {
+  Disable-ADAccount -Identity $account
+  Wirte-Host "Disabled stale account $($account.name)"
+}
