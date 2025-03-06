@@ -1,0 +1,14 @@
+# Variables
+$Domain = '@domain.com'
+
+$firstName = Read-Host "Enter user first name"
+$lastName = Read-host "Enter user last name"
+$DisplayName = $firstName +" "+ $lastName
+$mailNickname = $firstName + "." + $lastName
+$userPrincipalName = $firstName + "." + $lastName + $Domain
+$PasswordProfile =@{
+ForceChangePAsswordNextSignIn = $true
+Password = 'P@ssW0rd'
+}
+
+New-MGUser -DisplayName $DisplayName -PasswordProfile $PasswordProfile -AccountEnabled -MailNickName $mailNickname -UserPrincipalName $userPrincipalName -GivenName $firstName -Surname $lastName
