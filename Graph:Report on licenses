@@ -1,0 +1,16 @@
+#What license do they have assigned
+$joey = Get-MgUser -filter "DisplayName eq 'Joey Hamm'" -property *
+Get-MgUserLicenseDetail -UserId $steve.Id
+
+#count all licenses applied throughout org
+$users = Get-MgUser -all
+$userLic = New-Object System.Collections.ArrayList
+
+foreach($user in $users)
+  { 
+    foreach($lic in ((Get-MgUserLicenseDetail -UserId $user.Id).ServicePlans | Where-Object {$_.ProvisioningStatus -ne "Disabled"} | Select-Object -ExpandProperty ServicePlanName))
+    {
+      $userLic.add($lic) | Out-Null
+    }
+}
+$userLic | Group-Object | Select-Object Count,Name | Sort-Object -Descending Count
