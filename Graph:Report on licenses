@@ -13,4 +13,7 @@ foreach($user in $users)
       $userLic.add($lic) | Out-Null
     }
 }
+
+<# for organizing the list
 $userLic | Group-Object | Select-Object Count,Name | Sort-Object -Descending Count
+#>
