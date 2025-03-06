@@ -7,7 +7,7 @@ $helpdeskGroup = Get-MgGroup -Filter "DisplayName eq 'HelpDesk'"
 
 <#
 New-MgGroup -DisplayName 'Security - Test Group' -MailEnabled:$False -MailNickName 'security-testgroup' -SecurityEnabled
-
+#there might be some issues with this command that is being worked on github.  issues/748
 $prop = @{}
 $prop["mailEnabled"] = true
 New-MgGroup -DisplayName 'SecurityMail - Test Group' -MailNickName 'securitymail-testgroup' -AdditionalProperties $prop -SecurityEnabled
