@@ -1,0 +1,10 @@
+#run this for his infomration
+$userName = Get-MgUser -all | Where-Object {$_.DisplayName -eq "username"}
+
+#now run this script for the subscriptions that are available.  not count available
+$OBE_Sku = Get-MgSubscribedSku -all | Where-Object SkuPartNumber -eq 'O365_BUSINESS_ESSENTIALS'
+
+#now that the script has be run and stores the skuid for the proper license. run the set command 
+Set-MgUserLicense -UserId $username.Id -AddLicenses @{SkuId = $OBE_Sku.SkuId} -RemoveLicenses @()
+
+Set-MgUserLicense -UserId $joey.Id -AddLicenses @{SkuId = $OBE_Sku.SkuId} -RemoveLicenses @() 
