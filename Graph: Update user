@@ -1,0 +1,7 @@
+#Graph updates works with the ID of the object
+
+#run this variable to get the ID and have the property wild card
+$joey = Get-MgUser -filter "DisplayName eq 'Joey Hamm'" -property *
+
+#with the ID I can update any user property
+Update-mgUser -UserID $joey.ID -city "Phoenix"
