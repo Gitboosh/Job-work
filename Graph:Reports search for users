@@ -1,0 +1,6 @@
+Get-MgUser -filter "startswith(UserPrincipalName, 'a')"
+
+
+Get-MgUser -filter "Displayname eq 'Joey Hammontree'"
+
+Get-MgUser -all | Where-Object {$_.DisplayName -eq "Joey Hammontree"}
