@@ -1,5 +1,7 @@
- Install-Module Microsoft.Graph -Scope CurrentUser
- Install-Module Microsoft.Graph.Beta -Scope CurrentUser
+ Install-Module Microsoft.Graph 
+Set-ExecutionPolicy RemoteSigned
+import-module microsoft.graph.authentication
+Connect-mggraph
 
 <# Determine required permission scopes #>
 
