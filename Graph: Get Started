@@ -1,0 +1,11 @@
+ Install-Module Microsoft.Graph -Scope CurrentUser
+ Install-Module Microsoft.Graph.Beta -Scope CurrentUser
+
+<# Determine required permission scopes #>
+
+Find-MgGraphCommand -command Get-MgUser | Select -First 1 -ExpandProperty Permissions
+
+Connect-MgGraph -Scopes "User.Read.All","Group.ReadWrite.All"
+
+
+Disconnect-MgGraph
