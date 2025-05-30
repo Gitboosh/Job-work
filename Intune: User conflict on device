@@ -1,0 +1,3 @@
+Add-AzureADDeviceRegisteredOwner -ObjectId <Device ObjectId> -RefObjectId <New Owner ObjectId
+
+Remove-AzureADDeviceRegisteredOwner -ObjectId <Device ObjectId> -OwnerId <Previous Owner ObjectId
